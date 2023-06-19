@@ -25,3 +25,27 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.ProseMirror > * + * {
+  margin-top: 0.75em;
+}
+
+.ProseMirror h1 {
+  @apply font-bold text-4xl;
+}
+
+.ProseMirror h2 {
+  @apply font-bold text-3xl;
+}
+
+.ProseMirror h3 {
+  @apply font-bold text-2xl;
+}
+
+.ProseMirror {
+  @apply outline-gray-700 outline-2 outline rounded-sm transition-all;
+}
+
+.ProseMirror:focus {
+  @apply outline-gray-600;
+}
