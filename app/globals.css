@@ -43,7 +43,7 @@ body {
 }
 
 .ProseMirror {
-  @apply outline-gray-700 outline-2 outline rounded-sm transition-all;
+  @apply outline-gray-700 outline-2 outline rounded-sm transition-all py-3 px-2;
 }
 
 .ProseMirror:focus {

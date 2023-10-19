@@ -1,10 +1,5 @@
-import { ChromaClient, OpenAIEmbeddingFunction } from "chromadb";
+import { getCollection } from "@/lib/server";
 import { z } from "zod";
-
-const embedder = new OpenAIEmbeddingFunction({
-  openai_api_key: process.env.OPENAI_API_KEY || "",
-});
-const client = new ChromaClient();
 
 const SaveBody = z.object({
   content: z.string(),
@@ -12,10 +7,7 @@ const SaveBody = z.object({
 });
 
 export async function POST(request: Request) {
-  const collection = await client.getOrCreateCollection({
-    name: "notes",
-    embeddingFunction: embedder,
-  });
+  const collection = await getCollection("notes");
 
   const body = SaveBody.parse(await request.json());
 

@@ -1,20 +1,11 @@
-import { ChromaClient, OpenAIEmbeddingFunction } from "chromadb";
-import { z } from "zod";
-
-const embedder = new OpenAIEmbeddingFunction({
-  openai_api_key: process.env.OPENAI_API_KEY || "",
-});
-const client = new ChromaClient();
+import { getCollection } from "@/lib/server";
 
 export async function GET(
   request: Request,
   { params }: { params: { id: string } }
 ) {
   const url = new URL(request.url);
-  const collection = await client.getOrCreateCollection({
-    name: "notes",
-    embeddingFunction: embedder,
-  });
+  const collection = await getCollection("notes");
 
   const nResults = url.searchParams.get("nResults");
 
